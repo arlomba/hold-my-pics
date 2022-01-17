@@ -1,0 +1,28 @@
+{
+  "name": "hold-my-pics",
+  "version": "0.1.0",
+  "author": "Adrián Rey <adrianreylomba@gmail.com>",
+  "description": "Hosting para imágenes.",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css",
+    "watch": "NODE_ENV=dev nodemon app.js & npm run watch:css",
+    "build:css": "npx tailwindcss -i ./ui/css/tailwind.css -o ./public/assets/app.css --minify",
+    "watch:css": "npx tailwindcss -i ./ui/css/tailwind.css -o ./public/assets/app.css --watch"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "tailwindcss": "^3.0.15"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
+    "mongoose": "^6.1.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "pug": "^3.0.2"
+  }
+}

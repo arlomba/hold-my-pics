@@ -7,8 +7,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/images", imageController.getImages);
-router.get("/images/:id", imageController.getImageById);
 router.post("/images", imageController.createImage);
 router.get("/images/upload", imageController.getImageUpload);
+router.get("/images/:id", imageController.getImageById);
 
 module.exports = router;

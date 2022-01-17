@@ -1,17 +1,16 @@
 const express = require("express");
 const compression = require("compression");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.set("view engine", "pug");
+
 app.use(compression());
 app.use(express.static("public"));
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.use(routes);
 
 app.listen(PORT, (err) => {
   if (err) {

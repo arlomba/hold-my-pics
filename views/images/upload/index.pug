@@ -2,7 +2,12 @@ extends ../../layout.pug
 
 block content
   .max-w-2xl.my-8.mx-auto
-    form.space-y-6(action="/images", method="post", enctype="multipart/form-data")
+    if errors
+      .alert.danger
+        each error in errors
+          p= error
+
+    form.space-y-6(action="/images/upload", method="POST", enctype="multipart/form-data")
       .flex.flex-col
         label.label(for="title") Título
         input#title.text(type="text", name="title", minlenght="3", maxlength="75")
@@ -10,6 +15,6 @@ block content
         label.label(for="description") Descripción
         textarea#description.textarea(name="description", minlenght="3", maxlength="255")
       .flex
-        input#upload.upload(type="file", name="upload")
+        input#image.image(type="file", name="image")
       .flex
         button.button(type="submit") Enviar

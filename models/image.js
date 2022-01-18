@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const imageSchema = new mongoose.Schema({
   title: {
     type: String,
-    min: 3,
-    max: 75,
+    minlength: 3,
+    maxlength: 75,
     required: true,
   },
   description: {
     type: String,
-    min: 3,
-    max: 255,
+    minlength: 3,
+    maxlength: 255,
     required: true,
   },
   uploadedAt: {

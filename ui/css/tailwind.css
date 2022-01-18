@@ -19,4 +19,12 @@
   .button {
     @apply block border shadow-sm rounded-md bg-indigo-800 text-white font-bold py-2 px-6;
   }
+
+  .alert {
+    @apply border-l-4 p-3 my-6;
+  }
+
+  .danger {
+    @apply border-red-800 text-red-800 bg-red-200;
+  }
 }

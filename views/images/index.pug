@@ -1,4 +1,8 @@
 extends ../layout.pug
 
 block content
-  p.p-4.text-xl Hello, from images!
+  .card
+    each image in images
+      p.card-title= image.title
+      p.card-content= image.description
+      p.card-date= image.uploadedAt

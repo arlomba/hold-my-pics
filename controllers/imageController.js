@@ -10,10 +10,20 @@ exports.getImages = async (req, res) => {
 // POST /images/upload
 exports.createImage = async (req, res) => {
   try {
-    const { title, description } = await req.body;
-    await Image.create({ title, description });
+    const { title, description } = req.body;
+    const { filename } = req.file;
 
-    res.redirect("/images");
+    const image = new Image({
+      title,
+      description,
+      filename,
+    });
+
+    const result = await image.save();
+
+    if (result) {
+      res.status(201).redirect("/images");
+    }
   } catch (err) {
     const { errors } = err;
     res.render("images/upload/index", { errors });
@@ -27,5 +37,8 @@ exports.getImageUpload = async (req, res) => {
 
 // GET /images/:id
 exports.getImageById = async (req, res) => {
-  res.render("images/id");
+  const { id } = req.params;
+  const image = await Image.findOne({ id });
+
+  res.render("images/id", { image });
 };

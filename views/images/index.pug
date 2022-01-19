@@ -3,6 +3,8 @@ extends ../layout.pug
 block content
   .card
     each image in images
-      p.card-title= image.title
+      - var imgSrc = image.filename 
+      a.card-title(href="/images/" + image._id)= image.title
       p.card-content= image.description
+      img(src="storage/" + imgSrc, alt=image.title)
       p.card-date= image.uploadedAt

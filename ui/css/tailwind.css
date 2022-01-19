@@ -28,3 +28,9 @@
     @apply border-red-800 text-red-800 bg-red-200;
   }
 }
+
+@layer base {
+  a {
+    @apply text-indigo-600 font-semibold hover:underline;
+  }
+}

@@ -1,4 +1,7 @@
 extends ../layout.pug
 
 block content
-  p.p-4.text-xl Hello, from images/id!
+  p= image.title
+  p= image.description
+  img(src="/storage/" + image.filename, alt=image.title)
+  p= image.uploadedAt

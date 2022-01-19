@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 if (process.env.NODE_ENV === "dev") {
-  mongoose.connect("mongodb://localhost:27017/myapp");
+  mongoose.connect("mongodb://localhost:27017/hold-my-pics");
 }
 
 app.set("view engine", "pug");

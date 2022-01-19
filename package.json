@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:css",
-    "watch": "NODE_ENV=dev & nodemon app.js & npm run watch:css",
+    "watch": "cross-env NODE_ENV=dev nodemon app.js & npm run watch:css",
     "build:css": "npx tailwindcss -i ./ui/css/tailwind.css -o ./public/assets/app.css --minify",
     "watch:css": "npx tailwindcss -i ./ui/css/tailwind.css -o ./public/assets/app.css --watch"
   },
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
     "express": "^4.17.2",
     "helmet": "^5.0.1",
     "mongoose": "^6.1.6",

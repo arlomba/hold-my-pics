@@ -1,4 +1,10 @@
 extends layout.pug
 
 block content
-  p.p-4.text-xl Hello, World!
+  .card
+    each image in images
+      - var imgSrc = image.filename
+      a.card-title(href="/images/" + image._id)= image.title
+      p.card-content= image.description
+      img(src="/storage/" + imgSrc, alt=image.title)
+      p.card-date= image.uploadedAt

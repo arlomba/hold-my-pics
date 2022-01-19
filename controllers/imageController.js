@@ -1,44 +1,56 @@
 const Image = require("../models/image");
+const multer = require("multer");
+const { upload } = require("../lib/multer");
 
-// GET /images
+// GET /
 exports.getImages = async (req, res) => {
   const images = await Image.find({});
 
-  res.render("images/index", { images });
+  res.render("index", { images });
 };
 
-// POST /images/upload
-exports.createImage = async (req, res) => {
-  try {
-    const { title, description } = req.body;
-    const { filename } = req.file;
+// POST /upload
+exports.createImage = async (req, res, next) => {
+  upload(req, res, async (err) => {
+    try {
+      if (err instanceof multer.MulterError) {
+        // A Multer error occurred when uploading.
+      } else if (err) {
+        // An unknown error occurred when uploading.
+      }
 
-    const image = new Image({
-      title,
-      description,
-      filename,
-    });
+      if (!req.file) {
+        new Error("No input file!");
+      }
 
-    const result = await image.save();
+      const { title, description } = req.body;
+      const { filename } = req.file;
 
-    if (result) {
-      res.status(201).redirect("/images");
+      const result = await Image.create({
+        title,
+        description,
+        filename,
+      });
+
+      if (result) {
+        res.status(201).redirect("/");
+      }
+    } catch (err) {
+      const { errors } = err;
+      res.render("upload/index", { errors });
     }
-  } catch (err) {
-    const { errors } = err;
-    res.render("images/upload/index", { errors });
-  }
+  });
 };
 
-// GET /images/upload
+// GET /upload
 exports.getImageUpload = async (req, res) => {
-  res.render("images/upload/index");
+  res.render("upload/index");
 };
 
 // GET /images/:id
 exports.getImageById = async (req, res) => {
   const { id } = req.params;
-  const image = await Image.findOne({ id });
+  const image = await Image.findOne({ _id: id });
 
   res.render("images/id", { image });
 };

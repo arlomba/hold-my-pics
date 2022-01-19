@@ -1,4 +1,4 @@
-extends ../../layout.pug
+extends ../layout.pug
 
 block content
   .max-w-2xl.my-8.mx-auto
@@ -7,7 +7,7 @@ block content
         each error in errors
           p= error
 
-    form.space-y-6(action="/images/upload", method="POST", enctype="multipart/form-data")
+    form.space-y-6(action="/upload", method="POST", enctype="multipart/form-data")
       .flex.flex-col
         label.label(for="title") Título
         input#title.text(type="text", name="title", minlenght="3", maxlength="75")

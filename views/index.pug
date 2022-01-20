@@ -5,8 +5,7 @@ block content
     each image in images
       - var imgSrc = image.filename
       .card
-        .w-auto.h-auto
-          img.card-image(src="/storage/" + imgSrc, alt=image.title)
+        img.card-image(src="/storage/" + imgSrc, alt=image.title)
         .card-content
           a.card-title(href="/images/" + image._id)= image.title
           p= image.description

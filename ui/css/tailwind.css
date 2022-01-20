@@ -29,19 +29,19 @@
   }
 
   .section {
-    @apply grid grid-cols-1 lg:grid-cols-3 gap-6 my-8;
+    @apply grid grid-cols-1 lg:grid-cols-5 gap-6 my-8 justify-self-center;
   }
 
   .card {
-    @apply shadow border;
+    @apply rounded shadow border;
   }
 
   .card-image {
-    @apply h-full w-full object-contain;
+    @apply rounded-t mb-2;
   }
 
   .card-content {
-    @apply py-2 px-4;
+    @apply px-4 pb-4;
   }
 }
 

@@ -4,13 +4,17 @@ const { upload } = require("../lib/multer");
 
 // GET /
 exports.getImages = async (req, res) => {
-  const images = await Image.find({});
+  try {
+    const images = await Image.find({});
 
-  res.render("index", { images });
+    res.render("index", { images });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 // POST /upload
-exports.createImage = async (req, res, next) => {
+exports.createImage = async (req, res) => {
   upload(req, res, async (err) => {
     try {
       // TODO: Fix error handling when the file input has errors or is empty
@@ -52,8 +56,12 @@ exports.getImageUpload = async (req, res) => {
 
 // GET /images/:id
 exports.getImageById = async (req, res) => {
-  const { id } = req.params;
-  const image = await Image.findOne({ _id: id });
+  try {
+    const { id } = req.params;
+    const image = await Image.findOne({ _id: id });
 
-  res.render("images/id", { image });
+    res.render("images/id", { image });
+  } catch (err) {
+    console.error(err);
+  }
 };

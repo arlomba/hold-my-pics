@@ -27,6 +27,22 @@
   .danger {
     @apply border-red-800 text-red-800 bg-red-200;
   }
+
+  .section {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6 my-8;
+  }
+
+  .card {
+    @apply shadow border;
+  }
+
+  .card-image {
+    @apply h-full w-full object-contain;
+  }
+
+  .card-content {
+    @apply py-2 px-4;
+  }
 }
 
 @layer base {

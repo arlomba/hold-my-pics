@@ -13,10 +13,13 @@ exports.getImages = async (req, res) => {
 exports.createImage = async (req, res, next) => {
   upload(req, res, async (err) => {
     try {
+      // TODO: Fix error handling when the file input has errors or is empty
       if (err instanceof multer.MulterError) {
         // A Multer error occurred when uploading.
+        new Error(err);
       } else if (err) {
         // An unknown error occurred when uploading.
+        new Error(err);
       }
 
       if (!req.file) {

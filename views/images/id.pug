@@ -1,7 +1,9 @@
 extends ../layout.pug
 
 block content
-  p= image.title
-  p= image.description
-  img(src="/storage/" + image.filename, alt=image.title)
-  p= image.uploadedAt
+  section.grid.justify-around.my-8
+    img(src="/storage/" + image.filename, alt=image.title)
+    h1.title= image.title
+    p.card-description= image.description
+    footer.card-footer
+      p.card-date= image.publishedAt

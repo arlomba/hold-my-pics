@@ -20,9 +20,9 @@ const imageSchema = new mongoose.Schema({
     required: [true, "El campo 'Descripción' es requerido."],
   },
   filename: String,
-  uploadedAt: {
+  publishedAt: {
     type: Date,
-    default: Date.now(),
+    default: Date,
   },
 });
 

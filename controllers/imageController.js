@@ -1,11 +1,16 @@
 const Image = require("../models/image");
 const multer = require("multer");
 const { upload } = require("../lib/multer");
+const { formatDate } = require("../lib/formatDate");
 
 // GET /
 exports.getImages = async (req, res) => {
   try {
-    const images = await Image.find({});
+    const images = await Image.find().lean();
+
+    images.forEach((image) => {
+      formatDate(image);
+    });
 
     res.render("index", { images });
   } catch (err) {
@@ -58,7 +63,9 @@ exports.getImageUpload = async (req, res) => {
 exports.getImageById = async (req, res) => {
   try {
     const { id } = req.params;
-    const image = await Image.findOne({ _id: id });
+    const image = await Image.findOne({ _id: id }).lean();
+
+    formatDate(image);
 
     res.render("images/id", { image });
   } catch (err) {

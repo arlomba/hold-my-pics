@@ -29,7 +29,7 @@
   }
 
   .section {
-    @apply grid grid-cols-1 lg:grid-cols-5 gap-6 my-8 justify-self-center;
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8 mx-2 justify-center;
   }
 
   .card {
@@ -41,7 +41,38 @@
   }
 
   .card-content {
-    @apply px-4 pb-4;
+    @apply px-4;
+  }
+
+  .title::first-letter,
+  .card-title::first-letter,
+  .card-description::first-letter {
+    @apply capitalize;
+  }
+
+  .title,
+  .card-title {
+    @apply font-bold mb-2;
+  }
+
+  .title {
+    @apply text-2xl;
+  }
+
+  .card-title {
+    @apply text-sm;
+  }
+
+  .card-description {
+    @apply text-gray-800;
+  }
+
+  .card-footer {
+    @apply py-2;
+  }
+
+  .card-date {
+    @apply text-xs font-semibold text-gray-500;
   }
 }
 

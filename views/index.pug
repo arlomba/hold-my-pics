@@ -3,10 +3,10 @@ extends layout.pug
 block content
   section.section
     each image in images
-      - var imgSrc = image.filename
       .card
-        img.card-image(src="/storage/" + imgSrc, alt=image.title)
+        img.card-image(src="/storage/" + image.filename, alt=image.title)
         .card-content
           a.card-title(href="/images/" + image._id)= image.title
-          p= image.description
-          p.card-date= image.uploadedAt
+          p.card-description= image.description
+          footer.card-footer
+            p.card-date= image.publishedAt

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { format } = require("date-fns");
+const { es } = require("date-fns/locale");
 
 const imageSchema = new mongoose.Schema({
   title: {
@@ -19,11 +21,21 @@ const imageSchema = new mongoose.Schema({
     ],
     required: [true, "El campo 'Descripción' es requerido."],
   },
-  filename: String,
+  filename: {
+    type: String,
+    required: [true, "Debes incluir una imagen."],
+  },
   publishedAt: {
     type: Date,
     default: Date,
+    get: formatDate,
   },
 });
+
+function formatDate(date) {
+  const formattedDate = format(date, "d MMMM yyyy", { locale: es });
+
+  return `Publicada el ${formattedDate}`;
+}
 
 module.exports = mongoose.model("Image", imageSchema);

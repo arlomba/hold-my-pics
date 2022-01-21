@@ -7,6 +7,10 @@ block content
         each error in errors
           p= error
 
+    if error
+      .alert.danger
+        p= error
+
     form.space-y-6(action="/upload", method="POST", enctype="multipart/form-data")
       .flex.flex-col
         label.label(for="title") Título

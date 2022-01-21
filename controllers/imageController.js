@@ -1,16 +1,11 @@
 const Image = require("../models/image");
 const multer = require("multer");
-const { upload } = require("../lib/multer");
-const { formatDate } = require("../lib/formatDate");
+const { upload, getErrorMessage } = require("../lib/multer");
 
 // GET /
 exports.getImages = async (req, res) => {
   try {
-    const images = await Image.find().lean();
-
-    images.forEach((image) => {
-      formatDate(image);
-    });
+    const images = await Image.find();
 
     res.render("index", { images });
   } catch (err) {
@@ -19,24 +14,18 @@ exports.getImages = async (req, res) => {
 };
 
 // POST /upload
-exports.createImage = async (req, res) => {
+exports.createImage = (req, res) => {
   upload(req, res, async (err) => {
     try {
-      // TODO: Fix error handling when the file input has errors or is empty
-      if (err instanceof multer.MulterError) {
-        // A Multer error occurred when uploading.
-        new Error(err);
-      } else if (err) {
-        // An unknown error occurred when uploading.
-        new Error(err);
-      }
+      if (err) {
+        const error = getErrorMessage(err);
 
-      if (!req.file) {
-        new Error("No input file!");
+        res.render("upload/index", { error });
+        return;
       }
 
       const { title, description } = req.body;
-      const { filename } = req.file;
+      const { filename } = req.file ?? "";
 
       const result = await Image.create({
         title,
@@ -63,9 +52,7 @@ exports.getImageUpload = async (req, res) => {
 exports.getImageById = async (req, res) => {
   try {
     const { id } = req.params;
-    const image = await Image.findOne({ _id: id }).lean();
-
-    formatDate(image);
+    const image = await Image.findOne({ _id: id });
 
     res.render("images/id", { image });
   } catch (err) {

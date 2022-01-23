@@ -54,6 +54,11 @@ exports.getImageById = async (req, res) => {
     const { id } = req.params;
     const image = await Image.findOne({ _id: id });
 
+    if (!image) {
+      res.status(404).render("errors/404");
+      return;
+    }
+
     res.render("images/id", { image });
   } catch (err) {
     console.error(err);

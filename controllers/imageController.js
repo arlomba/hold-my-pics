@@ -1,5 +1,5 @@
+const { getColor } = require("colorthief");
 const Image = require("../models/image");
-const multer = require("multer");
 const { upload, getErrorMessage } = require("../lib/multer");
 
 // GET /
@@ -25,12 +25,18 @@ exports.createImage = (req, res) => {
       }
 
       const { title, description } = req.body;
-      const { filename } = req.file ?? "";
+      const { filename, path } = req.file ?? "";
+      let dominantColor;
+
+      if (req.file) {
+        dominantColor = await getColor(path);
+      }
 
       const result = await Image.create({
         title,
         description,
         filename,
+        dominantColor,
       });
 
       if (result) {
@@ -44,9 +50,7 @@ exports.createImage = (req, res) => {
 };
 
 // GET /upload
-exports.getImageUpload = async (req, res) => {
-  res.render("upload/index");
-};
+exports.getImageUpload = (req, res) => res.render("upload/index");
 
 // GET /images/:id
 exports.getImageById = async (req, res) => {

@@ -9,9 +9,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const app = express();
 
-if (process.env.NODE_ENV === "dev") {
-  mongoose.connect(MONGO_URI);
-}
+mongoose.connect(MONGO_URI);
 
 app.set("view engine", "pug");
 

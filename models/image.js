@@ -25,12 +25,28 @@ const imageSchema = new mongoose.Schema({
     type: String,
     required: [true, "Debes incluir una imagen."],
   },
+  dominantColor: {
+    type: Array,
+    get: rgbToHex,
+  },
   publishedAt: {
     type: Date,
     default: Date,
     get: formatDate,
   },
 });
+
+function rgbToHex(color) {
+  return (
+    "#" +
+    Object.values(color)
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      })
+      .join("")
+  );
+}
 
 function formatDate(date) {
   const formattedDate = format(date, "d MMMM yyyy", { locale: es });

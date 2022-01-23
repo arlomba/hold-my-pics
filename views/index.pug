@@ -3,10 +3,11 @@ extends layout.pug
 block content
   section.section
     each image in images
-      .card
-        img.card-image(src="/storage/" + image.filename, alt=image.title)
-        .card-content
-          a.card-title(href="/images/" + image._id)= image.title
-          p.card-description= image.description
-          footer.card-footer
-            p.card-date= image.publishedAt
+      a(href="/images/" + image._id)
+        .card
+          img.card-image(src="/storage/" + image.filename, alt=image.title)
+          .card-content
+            p.card-title= image.title
+            p.card-description= image.description
+            footer.card-footer
+              p.card-date= image.publishedAt

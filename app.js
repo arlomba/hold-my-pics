@@ -1,14 +1,16 @@
+require("dotenv").config();
 const express = require("express");
 const compression = require("compression");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
 const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
 
 const app = express();
 
 if (process.env.NODE_ENV === "dev") {
-  mongoose.connect("mongodb://localhost:27017/hold-my-pics");
+  mongoose.connect(MONGO_URI);
 }
 
 app.set("view engine", "pug");

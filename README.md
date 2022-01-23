@@ -2,6 +2,24 @@
 
 App para subir imágenes a tu servidor.
 
+# Instalación y uso
+
+Instalar las dependencias:
+
+```bash
+npm install
+```
+
+Copiar el archivo `.env.example` y renombrarlo a `.env`.
+
+Iniciar el servidor:
+
+```bash
+npm start
+```
+
+La aplicación debería estar ejecutándose en: http://localhost:3000
+
 ## Estructura del proyecto
 
 Debido a que Express es unopinionated, no te obliga a estructurar tu app de forma alguna, utilizo un patrón de diseño conocido como Model-View-Controller (MVC), ya que es intuitivo y muy común en las aplicaciones web.

@@ -13,7 +13,7 @@ exports.getImages = async (req, res) => {
   }
 };
 
-// POST /upload
+// POST /
 exports.createImage = (req, res) => {
   upload(req, res, async (err) => {
     try {

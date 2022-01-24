@@ -41,7 +41,7 @@
   }
 
   .card-image-full {
-    @apply mb-2;
+    @apply mb-2 mx-auto;
   }
 
   .card-image {

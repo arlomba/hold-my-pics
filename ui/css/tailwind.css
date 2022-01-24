@@ -84,7 +84,7 @@
   }
 
   .card-color {
-    @apply h-6 w-6 rounded-full mx-2;
+    @apply h-6 w-6 rounded-full mx-2 border;
   }
 
   .card-color-text {

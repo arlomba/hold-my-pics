@@ -17,6 +17,7 @@ bootstrap = async () => {
     app.use(express.urlencoded({ extended: false }));
     app.use(compression());
     app.use(express.static("public"));
+    app.get("/favicon.ico", (req, res) => res.status(204));
     app.use(routes);
     app.use((req, res) => res.status(404).render("errors/404"));
 

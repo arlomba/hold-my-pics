@@ -5,7 +5,7 @@ const { upload, getErrorMessage } = require("../lib/multer");
 // GET /
 exports.getImages = async (req, res) => {
   try {
-    const images = await Image.find();
+    const images = await Image.find().sort({ filename: "desc" });
 
     res.render("index", { images });
   } catch (err) {

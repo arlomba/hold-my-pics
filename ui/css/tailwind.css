@@ -40,8 +40,12 @@
     @apply rounded shadow border;
   }
 
+  .card-image-full {
+    @apply mb-2;
+  }
+
   .card-image {
-    @apply rounded-t mb-2;
+    @apply w-96 h-96 object-cover rounded-t mb-2;
   }
 
   .card-content {
@@ -64,11 +68,11 @@
   }
 
   .card-title {
-    @apply text-sm;
+    @apply font-extrabold;
   }
 
   .card-description {
-    @apply text-gray-800;
+    @apply text-sm text-gray-800 italic;
   }
 
   .card-footer {

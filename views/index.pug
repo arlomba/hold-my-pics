@@ -1,6 +1,8 @@
 extends layout.pug
 
 block content
+  include components/search.pug
+
   section.section
     each image in images
       a(href="/images/" + image._id)

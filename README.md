@@ -25,11 +25,11 @@ La aplicación debería estar ejecutándose en: http://localhost:3000
 Debido a que Express es unopinionated, no te obliga a estructurar tu app de forma alguna, utilizo un patrón de diseño conocido como Model-View-Controller (MVC), ya que es intuitivo y muy común en las aplicaciones web.
 
 - `controllers`: Los controladores se encargan de definir la funcionalidad que debe tener cada endpoint.
-- `lib`: Donde defino las funciones reutilizables y el middleware.
+- `lib`: Donde se definen las funciones reutilizables y el middleware.
 - `models`: Almacena los modelos que definen la estructura de la base de datos.
-- `routes`: Donde defino las rutas de la app, cada ruta tiene asignado un controlador.
+- `routes`: Donde se definen las rutas de la app, cada ruta tiene asignado un controlador.
 - `ui`: Donde se encuentra el código CSS y JavaScript del lado cliente.
-- `views`: Donde almaceno las plantillas HTML subdivididas en carpetas para su reutilización (utilizo Pug en lugar de EJS).
+- `views`: Donde se almacenan las plantillas HTML subdivididas en carpetas para su reutilización.
 
 Otros directorios y archivos comunes:
 

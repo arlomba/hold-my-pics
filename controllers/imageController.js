@@ -1,6 +1,7 @@
 const { getColor } = require("colorthief");
 const Image = require("../models/image");
 const { upload, getErrorMessage } = require("../lib/multer");
+const { Types } = require("mongoose");
 
 // GET /
 exports.getImages = async (req, res) => {
@@ -62,6 +63,12 @@ exports.getImageUpload = (req, res) => res.render("upload/index");
 exports.getImageById = async (req, res) => {
   try {
     const { id } = req.params;
+
+    if (!Types.ObjectId.isValid(id)) {
+      res.status(404).render("errors/404");
+      return;
+    }
+
     const image = await Image.findOne({ _id: id });
 
     if (!image) {
